@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Deadline</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap");
+
+      * {
+        font-family: "MuseoModerno", cursive;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .conteiner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .countDown {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #42ed95;
+        width: 250px;
+        color: white;
+        border-radius: 10px;
+        height: 100px;
+        font-size: 2rem;
+        -webkit-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.37);
+        -moz-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.37);
+        box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.37);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="conteiner">
+      <div class="countDown"></div>
+    </div>
+    <script>
+      const days = document.querySelector(".countDown");
+
+      function getTimeRemaining(endtime) {
+        const total = Date.parse(endtime) - Date.parse(new Date());
+        const seconds = Math.floor((total / 1000) % 60);
+        const minutes = Math.floor((total / 1000 / 60) % 60);
+        const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+        return {
+          total,
+          days,
+          hours,
+          minutes,
+          seconds,
+        };
+      }
+
+      setInterval(function () {
+        let obj = getTimeRemaining("2020-08-15");
+        let zero = obj.hours < 10 ? 0 : "";
+
+        days.innerHTML =
+          "<p>" +
+          obj.days +
+          " : " +
+          zero +
+          obj.hours +
+          " : " +
+          obj.minutes +
+          " : " +
+          obj.seconds +
+          "</p>";
+      }, 1000);
+    </script>
+  </body>
+</html>
