@@ -61,18 +61,21 @@
       }
 
       setInterval(function () {
-        let obj = getTimeRemaining("2020-08-15");
-        let zero = obj.hours < 10 ? 0 : "";
+        let obj = getTimeRemaining("2020-08-11");
+        let zeroD = obj.days < 10 ? 0 : "";
+        let zeroH = obj.hours < 10 ? 0 : "";
+        let zeroM = obj.minutes < 10 ? 0 : "";
+        let zeroS = obj.seconds < 10 ? 0 : "";
 
         days.innerHTML =
-          "<p>" +
+          "<p>" + zeroD +
           obj.days +
           " : " +
-          zero +
+          zeroH +
           obj.hours +
-          " : " +
+          " : " + zeroM +
           obj.minutes +
-          " : " +
+          " : " + zeroS +
           obj.seconds +
           "</p>";
       }, 1000);
